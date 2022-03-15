@@ -42,6 +42,36 @@ Include in your code and begin using the library:
 
 ## Usage
 
+### Functions
+
+* `StartPlayerLoadingBar(playerid, val = 3, const text[] = "_", color = 1687547311)` :
+
+  * Create player a LoadingBar
+  
+  * playerid = The player ID you wan't to show the LoadingBar.
+  * val = The maximum value for the LoadingBar (1 value = 1 second).
+  * text = The text when LoadingBar showed.
+  * color = The color for LoadingBar (default are 1687547311, you can use color format like '0xFF0000FF').
+
+* `StopPlayerLoadingBar(playerid)` :
+
+  * Stop current player LoadingBar (if exists).
+
+* `IsValidLoadingBar` :
+
+  * Check if player have active LoadingBar or no.
+
+### Callbacks
+
+* `OnLoadingBarProgress(playerid, value)` :
+
+  * Detect every LoadingBar value updated.
+  * value = current value when updated.
+
+* `OnLoadingBarFinished` :
+
+  * Detect when current player LoadingBar finished.
+
 <!--
 Write your code documentation or examples here. If your library is documented in
 the source code, direct users there. If not, list your API and describe it well
