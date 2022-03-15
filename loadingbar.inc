@@ -1,5 +1,3 @@
-#include <a_samp>
-
 #if defined _loadingbar_included
   #endinput
 #endif
