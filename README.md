@@ -68,7 +68,7 @@ Include in your code and begin using the library:
   * Detect every LoadingBar value updated.
   * value = current value when updated.
 
-* `OnLoadingBarFinished` :
+* `OnLoadingBarFinished(playerid)` :
 
   * Detect when current player LoadingBar finished.
 
