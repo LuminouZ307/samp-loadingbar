@@ -57,7 +57,7 @@ Include in your code and begin using the library:
 
   * Stop current player LoadingBar (if exists).
 
-* `IsValidLoadingBar` :
+* `IsValidLoadingBar(playerid)` :
 
   * Check if player have active LoadingBar or no.
 
