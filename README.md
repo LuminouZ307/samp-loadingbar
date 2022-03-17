@@ -44,7 +44,7 @@ Include in your code and begin using the library:
 
 ### Functions
 
-* `StartPlayerLoadingBar(playerid, val = 3, const text[] = "_", color = 1687547311)` :
+* `StartPlayerLoadingBar(playerid, value = 3, const text[] = "_", interval = 1000, const callback[] = EOS, color = 1687547311)` :
 
   * Create player a LoadingBar
   
