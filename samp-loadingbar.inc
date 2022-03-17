@@ -48,8 +48,11 @@ public Loading_TimerUpdate(playerid)
 	}
 	else
 	{
+		if(LoadingCallback[playerid][0] != EOS)
+		{
+			CallLocalFunction(LoadingCallback[playerid], "d", playerid);
+		}
         CallLocalFunction(#OnLoadingBarFinished, "d", playerid);
-		CallLocalFunction(LoadingCallback[playerid], "d", playerid);
 		StopPlayerLoadingBar(playerid);	
 	}
 	return 1;
