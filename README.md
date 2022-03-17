@@ -49,8 +49,10 @@ Include in your code and begin using the library:
   * Create player a LoadingBar
   
   * playerid = The player ID you wan't to show the LoadingBar.
-  * val = The maximum value for the LoadingBar (1 value = 1 second).
+  * value = The maximum value for the LoadingBar.
   * text = The text when LoadingBar showed.
+  * interval = The uLoadingBar update interval.
+  * callback = The function/callback that called when the LoadingBar finished.
   * color = The color for LoadingBar (default are 1687547311, you can use color format like '0xFF0000FF').
 
 * `StopPlayerLoadingBar(playerid)` :
