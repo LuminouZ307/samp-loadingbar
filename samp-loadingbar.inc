@@ -3,11 +3,14 @@
 #endif
 #define _loadingbar_included
 
+#define			 MAX_CALLBACK_STR			34
+
 static  PlayerText:LoadingBar[MAX_PLAYERS][3],
         LoadingTimer[MAX_PLAYERS],
         LoadingValue[MAX_PLAYERS],
         LoadingMaxValue[MAX_PLAYERS],
-        bool:IsLoading[MAX_PLAYERS];
+        bool:IsLoading[MAX_PLAYERS],
+		LoadingCallback[MAX_PLAYERS][MAX_CALLBACK_STR];
 
 forward OnLoadingBarFinished(playerid);
 forward OnLoadingBarProgress(playerid, value);
@@ -21,6 +24,7 @@ static Loading_Remove(playerid)
 	LoadingValue[playerid] = 0;
 	LoadingMaxValue[playerid] = 0;
 	IsLoading[playerid] = false;
+	LoadingCallback[playerid][0] = EOS;
 	return 1;
 }
 
@@ -45,6 +49,7 @@ public Loading_TimerUpdate(playerid)
 	else
 	{
         CallLocalFunction(#OnLoadingBarFinished, "d", playerid);
+		CallLocalFunction(LoadingCallback[playerid], "d", playerid);
 		StopPlayerLoadingBar(playerid);	
 	}
 	return 1;
@@ -55,7 +60,7 @@ public Loading_TimerUpdate(playerid)
 stock IsValidLoadingBar(playerid)
 	return IsLoading[playerid];
 
-stock StartPlayerLoadingBar(playerid, val = 3, const text[] = "_", color = 1687547311)
+stock StartPlayerLoadingBar(playerid, value = 3, const text[] = "_", interval = 1000, const callback[] = EOS, color = 1687547311)
 {
 	if(IsValidLoadingBar(playerid))
 		StopPlayerLoadingBar(playerid);
@@ -109,10 +114,14 @@ stock StartPlayerLoadingBar(playerid, val = 3, const text[] = "_", color = 16875
 	{
 		PlayerTextDrawShow(playerid, LoadingBar[playerid][i]);
 	}
+	if(callback[0] != EOS)
+	{
+		format(LoadingCallback[playerid], MAX_CALLBACK_STR, "%s", callback);
+	}
 	LoadingValue[playerid] = 0;
 	IsLoading[playerid] = true;
-	LoadingMaxValue[playerid] = val;
-	LoadingTimer[playerid] = SetTimerEx(#Loading_TimerUpdate, 1000, true, "d", playerid);
+	LoadingMaxValue[playerid] = value;
+	LoadingTimer[playerid] = SetTimerEx(#Loading_TimerUpdate, interval, true, "d", playerid);
 	return 1;
 }
 
